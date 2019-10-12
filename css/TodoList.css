@@ -1,0 +1,75 @@
+    body{
+        padding: 0;
+        border: 0;
+        margin: 0;
+        background-image: url("images/background.jpg");
+        background-repeat:no-repeat;
+        background-size:cover;
+        font-family: roboto;
+        word-spacing: 5px;
+    }
+    h1{
+        background-color: #FF4500;
+        color: white;
+        margin: 0;
+        padding: 20px 20px;
+        text-transform: uppercase;
+        font-size: 24px;
+        font-weight: normal;
+    }
+    input{
+        font-size: 18px;
+        color: #2980b9;
+        background-color: #f7f7f7;
+        width: 100%;
+        padding: 15px;
+        box-sizing: border-box;
+        border: 3px solid rgba(0, 0, 0, 0);
+    }
+    input:focus{
+        border: 1px solid grey;
+        outline: none;
+    }
+    span{
+        background-color: #e74c73;
+        height: 40px;
+        margin-right: 20px;
+        text-align: center;
+        color: white;
+        width: 0;
+        display: inline-block;
+        transition: 0.2s linear;
+/*      to hide the icon*/
+        opacity: 0;
+    }
+    
+    li:hover span{
+        width: 40px;
+/*      to hide the icon*/
+        opacity: 1.0;
+    }
+    .fa-plus{
+        float: right;
+    }
+    ul{
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    li{
+        padding: 2px 2px; 
+        line-height: 40px;
+    }
+    li:nth-child(2n){
+        background-color: ghostwhite;
+    }
+    #container{
+        margin: 100px auto;
+        background-color: #fff;
+        width: 360px;
+        box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    }    
+    .completed{
+        color: gray;
+        text-decoration: line-through;
+    }

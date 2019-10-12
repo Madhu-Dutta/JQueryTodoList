@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="MaddyChan">
+<title>Todo List</title>
+<link rel="icon" type="text/css" href="images/icon.png">  
+<!--    fontAwesome-->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.css" rel="stylesheet" type="text/css">  
+<!--    google fonts-->
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<!-- jquery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/lib/jquery-ui/jquery-ui.js"></script>     
+<link href="js/lib/jquery-ui/jquery-ui.css" rel="stylesheet"> 
+<link type="text/css" rel="stylesheet" href="css/TodoList.css">
+
+</head>
+<body>
+    <div id="container">
+        <h1>To-Do List <i class="fa fa-plus" aria-hidden="true"></i></h1>
+        <input type="text" placeholder="Add New Todo"/>
+        <ul>
+            <li><span> <i class="fa fa-trash"></i> </span> <i class="fa fa-circle-o"></i> Default items 1st</li>
+            <li><span> <i class="fa fa-trash"></i> </span> <i class="fa fa-circle-o"></i> Default items 2nd</li>
+            <li><span> <i class="fa fa-trash"></i> </span> <i class="fa fa-circle-o"></i> Default items 3rd</li>
+
+        </ul>
+    </div>
+<!--     src="js/TodoList1.js"-->
+<script type="text/javascript">
+    $("ul").on("click","li",function(){
+    $(this).toggleClass("completed");  
+})
+
+//click on X to delete Todo. Select ul & use span as argument. Ie.change ul when a span is clicked.
+$("ul").on("click","span",function(){
+    
+    //to animate whole span & parent li
+    $(this).parent().fadeOut(500, function(){
+        //inside fadeOut() $(this) refers to "li" not "span"
+        $(this).remove();
+    });
+    
+    //this will prevent event bubbleups.i.e. only span event will trigger which is inside other events like li, ul, body
+    event.stopPropagation();
+    
+})
+
+//Add new Todos
+$("input[type=text]").keypress(function(event){
+    //enter key check (which = 13)
+    if(event.which === 13){
+        //grab the value of input after hitting enter
+        var todoText = $(this).val();
+        //remove input text after enter
+        $(this).val(" ");
+        //create a new li & add to ul
+        $("ul").append("<li><span><i class='fa fa-trash'></i></span> " + '<i class="fa fa-circle-o"></i> ' + todoText + "</li>");
+    }
+})
+
+//fadeToggle() to the icon to toggle the input bar on/off
+$(".fa-plus").on("click", function(){
+    $("input[type=text]").fadeToggle();
+})
+</script>
+</body>
+</html>
